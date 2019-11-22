@@ -1,3 +1,3 @@
 # NonlinearOpt
 
-THis is a python project that includes python code for Nonlinear Optimization course
+This is a python project for Non-Linear Optimization Coursework. This repo includes Python files created to solve the problems in  each of the assignments for this class.
