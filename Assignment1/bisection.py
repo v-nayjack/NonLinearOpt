@@ -90,11 +90,12 @@ def bisection(f, a, b, tol=1e-8, maxiter=1e3):
 
     return c, k
 
-# func = lambda x: x**2 + 2*x - 10
-# a = 0.9
-# b = 3.0
-# tol = 1e-6
-# maxiter = 1e3
-# c, k=bisection(func,a,b,tol, maxiter)
-#
-# print(c, k)
+
+func = lambda x: x**3 - 3*x**2
+a = 0.9
+b = 3.0
+tol = 1e-6
+maxiter = 1e3
+c, k=bisection(func,a,b,tol, maxiter)
+
+print(c, k)
