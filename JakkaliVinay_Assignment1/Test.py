@@ -1,5 +1,9 @@
-x = 1
-y = 2
+def myfunc():
+    print("Please enter an anonymous function for x")
+    n = input()
+    return lambda x: x
 
-z = x + y
-print(z)
+
+if __name__ == '__main__':
+    y = myfunc()
+    print(y)
