@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/NonLinearOpt.iml" filepath="$PROJECT_DIR$/.idea/NonLinearOpt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Non-LinearOpt.iml" filepath="$PROJECT_DIR$/.idea/Non-LinearOpt.iml" />
     </modules>
   </component>
 </project>

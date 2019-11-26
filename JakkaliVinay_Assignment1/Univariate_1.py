@@ -1,78 +1,116 @@
-import numpy as np
+# Created by Vinay Jakkali on 11/25/2019
+
+"""
+_________________________________________________________________
+The univariatescan function defined here takes following parameters as input
+
+INPUT:
+f : it is defined as an lambda function
+x0 : it is initial guess required for Newton Raphson method
+tol : This is the tolerance accepted for the minimized objective function
+alp : This is the step size
+maxiter : Maximum iterations to stop the optimization
+
+OUTPUT:
+1. Returns values of lower bracketed point(a), upper bracketed point(b) and total number of iterations (k)
+
+2. A new window with the plot showing objective function with the bracketed interval
+
+3. Print the values of total number of iterations, a and b to the console
+
+_________________________________________________________________
+"""
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def univariatescan(f, x0, tol=1e-8, alp=1e-2, maxiter=1e3):
-    """ The univariatescan function defined here takes following parameters as input
-    INPUT:
-    f : it is defined as an lambda function
-    x0 : it is initial guess required for Newton Raphson method
-    tol : This is the tolerance accepted for the minimized objective function
-    alp : This is the step size
-    maxiter : Maximum iterations to stop the optimization
+    fp = (f(x0 + tol) - f(x0)) / tol
+    fpp = (f(x0 + tol) - 2 * f(x0) + f(x0 - tol)) / (tol ** 2)
 
-    OUTPUT:
-    Plots showing objective function with the bracketed interval
-    Also prints the values of total number of iterations, a and b to the console
-
-    Returns values of lower bracketed point(a), upper bracketed point(b) and total number of iterations (k)"""
-
-    fp = (f(x0+tol) - f(x0))/tol
-    fpp = (f(x0+tol) - 2*f(x0) + f(x0-tol))/(tol**2)
     '''Checking to see if the initial guess is a maximum or point of inflection
     if the guess point is a maximum or point of inflection, the function takes small steps left and right
     of the guess point. After this, the condition checks for the appropriate direction to look for the interval '''
+
     if abs(fpp) <= tol:
+
         print("Initial guess is a maximum or point of inflection")
+
         xr = x0 + 1.0
         xl = x0 - 1.0
-        fpp_xr = (f(xr+tol) - 2*f(xr) + f(xr-tol))/(tol**2)
-        fpp_xl = (f(xl+tol) - 2*f(xl) + f(xl-tol))/(tol**2)
+
+        fpp_xr = (f(xr + tol) - 2 * f(xr) + f(xr - tol)) / (tol ** 2)
+        fpp_xl = (f(xl + tol) - 2 * f(xl) + f(xl - tol)) / (tol ** 2)
+
         if fpp_xr > fpp_xl:
             x0 = xr
+
         else:
             x0 = xl
+
     ''' Checking to see if the user guessed the minimum'''
+
     if fp == 0 and fpp > 0:
         print("The initial guess is the minimum")
         a = x0 + 2
         b = x0 - 2
         k = 0
         return [a, b, k]
+
     '''Actual calculation to find the bracket starts here.
      Determining the sign of the delta based on the first derivative of the obj. function'''
+
     if fp > 0:
         delta = -alp
+
     else:
         delta = alp
+
     xk = x0
     xk_f = xk + delta
+
     f_xk_f = round(f(xk_f), 4)
     f_xk = round(f(xk), 4)
+
     k = 0
     a = min(xk, xk_f)
     b = max(xk, xk_f)
+
     '''After calculating initial values, the function iterates to update the values of Xn and Xn_1
     The stopping criteria used is the condition F(Xn_1) > F(Xn) and maximum iterations'''
+
     while (f_xk > f_xk_f) and k < maxiter:
-        delta = 2*delta
+
+        delta = 2 * delta
+
         xk_b = xk
         xk = xk_f
         xk_f = xk + delta
+
         f_xk_f = f(xk_f)
         f_xk = f(xk)
+
         a = min(xk_b, xk_f)
         b = max(xk_b, xk_f)
+
         '''The following conditions check whether a & b are negative and kicks them back to +ve side'''
+
         if a < 0 and b < 0:
-            xk = 10*x0
+            xk = 10 * x0
+
         elif a < 0:
-            xk = 10*x0
-            delta = -1*delta
+            xk = 10 * x0
+
+            delta = -1 * delta
+
             f_xk = f(b)
             f_xk_f = f(a)
+
         k += 1
+
     print("The total number of iterations to find the bracket = ", k)
+
     print("The Bracket values are", round(a, 4), round(b, 4))
 
     return [round(a, 4), round(b, 4), k]
@@ -80,9 +118,12 @@ def univariatescan(f, x0, tol=1e-8, alp=1e-2, maxiter=1e3):
 
 def myplot(a, b, f):
     m = np.linspace(-10, 10, 1000)
+
     fv = []
+
     for i in range(len(m)):
         fv.append(f(m[i]))
+
     plt.figure()
     plt.plot(m, fv, color="red", linewidth=2)
     plt.plot([a, b], [f(a), f(b)], color="blue", linestyle='--')
@@ -100,8 +141,12 @@ def myplot(a, b, f):
 
 
 if __name__ == '__main__':
-    f = lambda x: x**3 - 3*x**2
-    x0 = 0.0
-    A, B, K = univariatescan(f, x0)
+    Func = lambda x: x ** 3 - 3 * x ** 2
+
+    X0 = 0.0
+
+    A, B, K = univariatescan(Func, X0)
+
     print("a =", A, "b = ", B, "No. of iterations = ", K)
-    myplot(A, B, f)
+
+    myplot(A, B, Func)
