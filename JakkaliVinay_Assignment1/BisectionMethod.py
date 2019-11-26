@@ -5,11 +5,11 @@
 The bisection function defined here takes following parameters as input
 
 INPUT:
-f : it is defined as an anonymous function
+f : It is defined as an anonymous function
 
-a : lower bracketed interval point
+a : Lower bracketed interval point
 
-b : upper bracketed interval point.
+b : Upper bracketed interval point.
 (Values of 'a' and 'b' can be obtained from univariatescan function)
 
 tol : This is the tolerance accepted for the minimized objective function
@@ -58,9 +58,11 @@ def bisection(f, a, b, tol=1e-8, maxiter=1e3):
 
     return round(c, 4), k
 
-'''Function 'myplot' plots the objective function along with the minimum'''
+""" Function 'myplot' plots the objective function along with the minimum """
+
 def myplot(c, f):
-    """Creating points for plotting the objective function"""
+
+    """ Creating points for plotting the objective function """
 
     m = np.linspace(-10, 10, 1000)
     fv = []
@@ -71,10 +73,10 @@ def myplot(c, f):
     plt.figure()
     plt.plot(m, fv, color="red", linewidth=2)
     plt.scatter(c, f(c), color="b", marker='o')
-    plt.title("F(x) minimization using bisection method", fontsize=24)
+    plt.title("F(x) minimization using bisection method", fontsize=20)
     plt.legend(("F(x)", "Minimum"), fontsize=14)
-    plt.xlabel("x", fontsize=24)
-    plt.ylabel("F(x)", fontsize=24)
+    plt.xlabel("x", fontsize=16)
+    plt.ylabel("F(x)", fontsize=16)
     plt.xlim(-10, 10)
     plt.grid()
     plt.axes().axhline(y=0, color='k')
@@ -94,5 +96,5 @@ if __name__ == "__main__":
     myplot(C, Func)
 
     print("Total no. of iterations to find the minimum of the Obj func = ", K)
-    print("The minimum point is = ", round(C, 4))
-    print("The minimum F(x) = ", round(Func(C), 4))
+    print("The minimum point is = ", C)
+    print("The minimum F(x) = ", round(Func(C), 2))

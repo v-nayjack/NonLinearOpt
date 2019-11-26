@@ -5,9 +5,9 @@
 The univariatescan function defined here takes following parameters as input
 
 INPUT:
-f : it is defined as an lambda function
+f : It is defined as an anonymous function
 
-x0 : it is initial guess required for Univariate Scan method
+x0 : It is initial guess required for Univariate Scan method
 
 tol : This is the tolerance accepted for the minimized objective function
 (by default tol = 1e-8)
@@ -32,12 +32,13 @@ import numpy as np
 
 
 def univariatescan(f, x0, tol=1e-8, alp=1e-2, maxiter=1e3):
+
     fp = (f(x0 + tol) - f(x0)) / tol
     fpp = (f(x0 + tol) - 2 * f(x0) + f(x0 - tol)) / (tol ** 2)
 
-    '''The following code block is used to check if the initial guess is a maxima or a point of inflection.
+    """ The following code block is used to check if the initial guess is a maxima or a point of inflection.
     If the given point is a maxima or a point of inflection, the function takes small steps left and right
-    of the given point to decide appropriate stepping direction to evaluate the bracketed interval '''
+    of the given point to decide appropriate stepping direction to evaluate the bracketed interval """
 
     if abs(fpp) <= tol:
 
@@ -55,18 +56,20 @@ def univariatescan(f, x0, tol=1e-8, alp=1e-2, maxiter=1e3):
         else:
             x0 = xl
 
-    ''' Checking to see if the user guessed the minima'''
+    """ Checking to see if the user guessed the minima """
 
     if fp == 0 and fpp > 0:
+
         print("The initial guess is the minima")
+
         a = x0 + 2
         b = x0 - 2
         k = 0
 
         return [a, b, k]
 
-    '''Actual calculation to find the bracket starts here.
-     Determining the sign of the delta based on the first derivative of the objective function'''
+    """ Actual calculation to find the bracketed values begins here.
+     Determining the sign of the delta based on the first derivative of the objective function """
 
     if fp > 0:
         delta = -alp
@@ -84,8 +87,8 @@ def univariatescan(f, x0, tol=1e-8, alp=1e-2, maxiter=1e3):
     a = min(xk, xk_f)
     b = max(xk, xk_f)
 
-    '''After calculating initial values, the function iterates to update the values of Xn and Xn_1.
-    The stopping criteria used --> Checking conditions {F(Xn_1) > F(Xn)} and maximum iterations {k < maxiter}'''
+    """ After calculating initial values, the function iterates to update the values of Xn and Xn_1.
+    The stopping criteria used --> Checking conditions {F(Xn_1) > F(Xn)} and maximum iterations {k < maxiter} """
 
     while (f_xk > f_xk_f) and k < maxiter:
 
@@ -101,8 +104,8 @@ def univariatescan(f, x0, tol=1e-8, alp=1e-2, maxiter=1e3):
         a = min(xk_b, xk_f)
         b = max(xk_b, xk_f)
 
-        '''The following conditions check whether 'a' & 'b' have negative values, 
-        if yes, it kicks them back to +ve side'''
+        """ The following conditions check whether 'a' & 'b' have negative values, 
+        if yes, it kicks them back to +ve side """
 
         if a < 0 and b < 0:
             xk = 10 * x0
@@ -119,9 +122,12 @@ def univariatescan(f, x0, tol=1e-8, alp=1e-2, maxiter=1e3):
 
     return [round(a, 4), round(b, 4), k]
 
-'''Function 'myplot' plots the objective function along with the bracketed values'''
+
+""" Function 'myplot' plots the objective function along with the bracketed values """
+
 def myplot(a, b, f):
-    """Creating points for plotting the objective function"""
+
+    """ Creating points for plotting the objective function """
 
     m = np.linspace(-10, 10, 1000)
     fv = []
@@ -135,9 +141,9 @@ def myplot(a, b, f):
     plt.scatter(a, f(a), color="green", marker='*')
     plt.scatter(b, f(b), color="green", marker='*')
     plt.legend(("F(x)", "Bracketed Interval"), fontsize=14)
-    plt.title("Bracketed Interval", fontsize=24)
-    plt.xlabel("x", fontsize=24)
-    plt.ylabel("F(x)", fontsize=24)
+    plt.title("Bracketed Interval", fontsize=20)
+    plt.xlabel("x", fontsize=16)
+    plt.ylabel("F(x)", fontsize=16)
     plt.grid()
     plt.axes().axhline(y=0, color='k')
     plt.axes().axvline(x=0, color='k')
@@ -146,12 +152,13 @@ def myplot(a, b, f):
 
 
 if __name__ == "__main__":
-    Func = lambda x: x ** 3 - 3 * x ** 2
+
+    Func = lambda x: x**3 - 3*x**2
 
     X0 = 0.0
 
     A, B, K = univariatescan(Func, X0)
     myplot(A, B, Func)
 
-    print("The total number of iterations to find the bracket = ", K)
-    print("The Bracket values: a =", A, "b = ", B)
+    print(" The total number of iterations to find the bracket = ", K)
+    print(" The Bracket values: a =", A, "b = ", B)
