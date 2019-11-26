@@ -89,8 +89,8 @@ if __name__ == "__main__":
 
     # Input Values for the 'bisection' function
     Func = lambda x: x**3 - 3*x**2
-    A = 0.9
-    B = 3.0
+    A = 1.23
+    B = 2.19
     tolerance = 1e-6
     maxiteration = 1e3
 

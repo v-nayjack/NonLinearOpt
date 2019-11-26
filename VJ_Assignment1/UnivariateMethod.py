@@ -156,7 +156,7 @@ if __name__ == "__main__":
 
     # Input Values for the 'univariatescan' function
     Func = lambda x: x**3 - 3*x**2
-    X0 = 0.0
+    X0 = 2.5
 
     # Returned Values
     A, B, K = univariatescan(Func, X0)

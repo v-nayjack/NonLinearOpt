@@ -85,7 +85,7 @@ def routing_plot(center, r, p, minimum):
 if __name__ == "__main__":
 
     # Input Values for the 'routing' function
-    Point = (1.0, 3.0)
+    Point = (2.0, 5.0)
     Center = (2.0, 2.0)
     Radius = 1.0
     Rho = 20
