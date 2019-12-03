@@ -32,10 +32,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def univariatescan(f, x0=0.0, tol=1e-8, alp=1e-2, maxiter=1e3):
+def univariatescan(F, x0=0.0, tol=1e-8, alp=1e-2, maxiter=1e3):
 
-    fp = (f(x0 + tol) - f(x0)) / tol
-    fpp = (f(x0 + tol) - 2 * f(x0) + f(x0 - tol)) / (tol ** 2)
+    fp = (F(x0 + tol) - F(x0)) / tol
+    fpp = (F(x0 + tol) - 2 * F(x0) + F(x0 - tol)) / (tol ** 2)
 
     """ The following code block is used to check if the initial guess is a maxima or a point of inflection.
     If the given point is a maxima or a point of inflection, the function takes small steps left and right
@@ -48,8 +48,8 @@ def univariatescan(f, x0=0.0, tol=1e-8, alp=1e-2, maxiter=1e3):
         xr = x0 + 1.0
         xl = x0 - 1.0
 
-        fpp_xr = (f(xr + tol) - 2 * f(xr) + f(xr - tol)) / (tol ** 2)
-        fpp_xl = (f(xl + tol) - 2 * f(xl) + f(xl - tol)) / (tol ** 2)
+        fpp_xr = (F(xr + tol) - 2 * F(xr) + F(xr - tol)) / (tol ** 2)
+        fpp_xl = (F(xl + tol) - 2 * F(xl) + F(xl - tol)) / (tol ** 2)
 
         if fpp_xr > fpp_xl:
             x0 = xr
@@ -81,8 +81,8 @@ def univariatescan(f, x0=0.0, tol=1e-8, alp=1e-2, maxiter=1e3):
     xk = x0
     xk_f = xk + delta
 
-    f_xk_f = round(f(xk_f), 4)
-    f_xk = round(f(xk), 4)
+    f_xk_f = round(F(xk_f), 4)
+    f_xk = round(F(xk), 4)
 
     k = 0
     a = min(xk, xk_f)
@@ -99,8 +99,8 @@ def univariatescan(f, x0=0.0, tol=1e-8, alp=1e-2, maxiter=1e3):
         xk = xk_f
         xk_f = xk + delta
 
-        f_xk_f = f(xk_f)
-        f_xk = f(xk)
+        f_xk_f = F(xk_f)
+        f_xk = F(xk)
 
         a = min(xk_b, xk_f)
         b = max(xk_b, xk_f)
@@ -116,8 +116,8 @@ def univariatescan(f, x0=0.0, tol=1e-8, alp=1e-2, maxiter=1e3):
 
             delta = -1 * delta
 
-            f_xk = f(b)
-            f_xk_f = f(a)
+            f_xk = F(b)
+            f_xk_f = F(a)
 
         k += 1
 

@@ -82,9 +82,9 @@ def prob4_plot(rnge, Minimum, X, Y):
 if __name__ == "__main__":
 
     # Input Values for the 'total_least_squares' function
-    X0 = 0.3
-    slope = 0.5
-    N = 1000
+    X0 = 0.45
+    slope = 0.7
+    N = 10
     D_range = (0, 5)
     y_intercept = 0.0
     noise = 1e-3
