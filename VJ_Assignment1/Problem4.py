@@ -45,16 +45,23 @@ def total_least_squares(x0=0.1, m=0.5, n=1000, d_range=(0, 5), b=0.0, eps=1e-2):
     # ri represents Ri from equation y = mx+b+e(Ri-1)
     ri = random.random()
 
+    # Creating a vector of size 'n'
     X = np.linspace(d_range[0], d_range[1], n)
     X = np.array(X)
 
+    # Defining the straight line equation given in the assignment using anonymous function
     y = lambda x: x * m + b + eps * (2 * ri - 1)
+
+    # Creating a vector containing the y values corresponding to x
     Y = np.array(y(X))
 
+    # Defining the given 'zi' equation
     z = lambda a: (X + a * Y) / (a ** 2 + 1)
 
+    # Defining the given F(a) equation
     F_a = lambda a: sum((X - z(a)) ** 2 + (Y - a * z(a)) ** 2)
 
+    # Minimizing the function F(a) using Newton-Raphson Method
     Minimum, iter_nr = nr(F_a, x0)
 
     return round(Minimum, 4), X, Y, F_a
@@ -64,7 +71,7 @@ def total_least_squares(x0=0.1, m=0.5, n=1000, d_range=(0, 5), b=0.0, eps=1e-2):
 def prob4_plot(rnge, Minimum, X, Y):
 
     plt.figure()
-    plt.scatter(X, Y, color='green', marker='o')
+    plt.scatter(X, Y, color='green', marker='*')
     plt.plot(X, Minimum*X, color='red', Linewidth=2)
     plt.title("Least Squares Method", fontsize=20)
     plt.xlabel("x axis", fontsize=16)
@@ -83,8 +90,8 @@ if __name__ == "__main__":
 
     # Input Values for the 'total_least_squares' function
     X0 = 0.45
-    slope = 0.7
-    N = 10
+    slope = 0.5
+    N = 1000
     D_range = (0, 5)
     y_intercept = 0.0
     noise = 1e-3

@@ -97,7 +97,7 @@ def newtonraphson_plot(xn, f):
     plt.figure()
     plt.plot(m, fv, color="red", linewidth=2)
     plt.scatter(xn, f(xn), color="blue", marker='o')
-    plt.title("Objective function", fontsize=20)
+    plt.title("F(x) minimization using Newton-Raphson Method", fontsize=18)
     plt.legend(("F(x)", "Minimum"), fontsize=14)
     plt.xlabel("x", fontsize=16)
     plt.ylabel("F(x)", fontsize=16)

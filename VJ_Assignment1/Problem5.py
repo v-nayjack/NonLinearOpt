@@ -39,19 +39,26 @@ from BisectionMethod import bisection_plot as bi_plt
 
 def routing(p=(5.0, 3.0), center=(2.0, 2.0), r=1.0, rho=20, x0=10.0, tol=1e-8):
 
+    # Defining the equation for A
     aa = lambda x: (x - p[0]) ** 2 + (p[1]) ** 2
 
+    # Defining the equation for B
     bb = lambda x: 2 * ((p[0] - x) * (x - center[0]) - (p[1] * center[1]))
 
+    # Defining the equation for C
     cc = lambda x: (x - center[0]) ** 2 + (center[1]) ** 2 - r ** 2
 
+    # Defining the equation for delta
     delta = lambda x: bb(x) ** 2 - 4 * aa(x) * cc(x)
 
+    # Defining the equation for the objective function
     f = lambda x: (x + ((aa(x)) ** 0.5) * (1 + rho * abs((((delta(x)) ** 0.5) / (aa(x)))))) \
         if delta(x) > 0 else x + ((aa(x)) ** 0.5)
 
+    # Inputting the objective function and initial guess into univariate scan function
     a, b, iter_uni = interval(f, x0)
 
+    # Obtaining the minimum using bisection method
     minimum, iter_bi = bisect(f, a, b, tol)
 
     return round(a, 4), round(b, 4), round(minimum, 4), f
@@ -85,7 +92,7 @@ def routing_plot(center, r, p, minimum):
 if __name__ == "__main__":
 
     # Input Values for the 'routing' function
-    Point = (2.0, 5.0)
+    Point = (1.0, 3.0)
     Center = (2.0, 2.0)
     Radius = 1.0
     Rho = 20
@@ -105,5 +112,6 @@ if __name__ == "__main__":
     routing_plot(Center, Radius, Point, Minimum)
 
     # Results output printed to the console
+    print(" The Bracket values: a =", A, "b = ", B)
     print(" The minimum distance on x axis = ", Minimum)
     print(" The minimum F(x) = ", round(Func(Minimum), 4))

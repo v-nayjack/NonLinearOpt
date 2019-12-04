@@ -33,16 +33,23 @@ import matplotlib.pyplot as plt
 
 def bisection(f, a, b, tol=1e-8, maxiter=1e3):
 
+    # initializing 'k' & 'c'
+
     k = 0
     c = 0.0
 
     while (np.abs(a - b) >= tol) and k < maxiter:
+        # Calculating the mid point 'c' with the given 'a' & 'b'
         c = (a + b) / 2.0
+        # Calculating the new value left of point 'c'
         left = (a + c) / 2.0
+        # Calculating the new value right of point 'c'
         right = (c + b) / 2.0
 
         fl = f(left)
         fr = f(right)
+
+        # Determining the direction of search
 
         if fr > fl:
             b = right
@@ -73,7 +80,7 @@ def bisection_plot(c, f):
     plt.figure()
     plt.plot(m, fv, color="red", linewidth=2)
     plt.scatter(c, f(c), color="b", marker='o')
-    plt.title("F(x) minimization using bisection method", fontsize=20)
+    plt.title("F(x) minimization using Bisection Method", fontsize=20)
     plt.legend(("F(x)", "Minimum"), fontsize=14)
     plt.xlabel("x", fontsize=16)
     plt.ylabel("F(x)", fontsize=16)

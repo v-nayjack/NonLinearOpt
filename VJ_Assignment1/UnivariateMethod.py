@@ -142,7 +142,7 @@ def univariate_plot(a, b, f):
     plt.scatter(a, f(a), color="green", marker='*')
     plt.scatter(b, f(b), color="green", marker='*')
     plt.legend(("F(x)", "Bracketed Interval"), fontsize=14)
-    plt.title("Bracketed Interval", fontsize=20)
+    plt.title("Bracketed Interval using Univariate Scan", fontsize=20)
     plt.xlabel("x", fontsize=16)
     plt.ylabel("F(x)", fontsize=16)
     plt.grid()
