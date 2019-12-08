@@ -63,7 +63,7 @@ def bisection(f, a, b, tol=1e-8, maxiter=1e3):
 
         k += 1
 
-    return round(c, 4), k
+    return round(c, 4)
 
 """ Function 'bisection_plot' plots the objective function along with the minimum """
 

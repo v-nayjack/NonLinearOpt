@@ -8,52 +8,74 @@ Include code description here:
 """
 
 import numpy as np
-from UnivariateMethod import univariatescan
 from BisectionMethod import bisection
 
 
-def powell_method(F, x0, maxiter=1e5, tol=1e-8):
+def powell_method(F, x0, Left, Right, maxiter=1e5, tol=1e-8):
 
-    X_k = x0  # 1xN
-    X_k1 = x0  # 1xN
+    X_k = np.copy(x0)  # 1xN
 
 
     N = len(x0)  # Scalar
-    D = np.eye(N)  # NxN
-    Z = []
-    SuccDir = []
-    S_star = []
+    D = np.ones(N)  # NxN
+
+    S_star = np.zeros(N)
     k = 0
+    stop_criteria = 1.0
 
-    while (np.linalg.norm(X_k1 - X_k) < tol) and k < maxiter:
-
-        Z = X_k1  # 1xN
+    while stop_criteria > tol and k < maxiter:
+        print("iteration =", k)
 
         for i in range(N):
 
-            f = lambda s: F(Z + s * D[i, :])  # 1xN
+            f = lambda s: F(X_k +(s*D))  # 1xN
 
-            a, b = univariatescan(f, Z[i])  # Scalar
+            print("X_k = ", X_k)
+
+            a = Left[i] - X_k[i]
+            b = Right[i] - X_k[i]
+
+            print('a', a)
+            print('b', b)
 
             S = bisection(f, a, b)  # Scalar
+            print('S', S)
 
-            Z = Z + S * D[i, :]  # 1xN
+            S_star[i] = S  # Nx1
 
-            S_star.append(S)  # Nx1
+        print('S_star', S_star)
+        X_k1 = X_k + (S_star * D)
+        print('X_k1', X_k1)
 
-            Si_Di = np.linalg.norm(S * D[i, :])  # Scalar
+        i_star = np.argmax(abs(S_star * D))  # Scalar
+        print('index', i_star)
 
-            SuccDir.append(Si_Di)  # Nx1
+        D[i_star] = X_k1[i_star] - X_k[i_star]  # 1xN
+        print('D', D)
 
-        ind = np.argmax(SuccDir)  # Scalar
+        stop_criteria = np.linalg.norm(X_k1 - X_k)
+        print(stop_criteria)
 
-        D[ind, :] = Z - X_k  # 1xN
-
-        X_k1 = Z
+        X_k = X_k1
 
         k += 1
 
-        return X_k1, k
+    return X_k1, k
+
+
+if __name__ == "__main__":
+
+    Func = lambda x: -4*x[0] + x[0]**2 - x[1] - x[0]*x[1] + x[1]**2
+    X0 = np.array([2.55, 1.75])
+    L = np.array([0, 0.])
+    U = np.array([5., 5.])
+
+    minX, K = powell_method(Func, X0, L, U)
+
+    print("minimum exists at  ", minX)
+    print('Fmin', Func(minX))
+    print("total no. of iterations = ", K)
+
 
     
 
