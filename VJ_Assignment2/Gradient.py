@@ -11,10 +11,10 @@ import numpy as np
 
 def gradient(F, x0, tol=1e-8):
 
-    initialX = np.copy(x0)
+    X_k = np.copy(x0)
     #print("X0", initialX)
 
-    N = len(initialX)
+    N = len(X_k)
     #print("N", N)
 
     h = np.eye(N)
@@ -23,14 +23,17 @@ def gradient(F, x0, tol=1e-8):
 
     #print("h", h)
 
-    g = np.zeros(N)
+    g = np.zeros(N, )
     #print("g", g)
+
 
     for i in range(N):
 
         H = np.copy(h[i, :])
 
-        g[i] = (F(x0 + H) - F(x0 - H))/(2*tol)
+        g[i] = (F(X_k + H) - F(X_k - H))/(2*tol)
+
+    g = g[:, np.newaxis]
 
     return g
 

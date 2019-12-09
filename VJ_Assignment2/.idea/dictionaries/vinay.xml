@@ -3,11 +3,14 @@
     <words>
       <w>armijo</w>
       <w>armijolinesearch</w>
+      <w>bfgs</w>
       <w>dircn</w>
       <w>fmin</w>
+      <w>jakkali</w>
       <w>maxiter</w>
       <w>powellmethod</w>
       <w>succ</w>
+      <w>vinay</w>
     </words>
   </dictionary>
 </component>

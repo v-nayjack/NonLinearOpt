@@ -26,7 +26,7 @@ def armijolinesearch(F, x0, pk, maxiter=1e3):
 
     while k < maxiter:
 
-        D = lambda s: (F(X0 + s*Pk) - F(X0))/(s * Pk * g)
+        D = lambda s: (F(X0 + s * Pk.flatten()) - F(X0))/(s * np.dot(np.transpose(Pk), g))
 
         if abs(1-D(S)) <= eta2:
             S_min = S

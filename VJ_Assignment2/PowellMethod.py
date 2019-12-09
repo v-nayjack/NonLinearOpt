@@ -61,7 +61,7 @@ def powell_method(F, x0, Left, Right, maxiter=1e5, tol=1e-8):
 
         k += 1
 
-    return X_k1, k
+    return X_k, k
 
 
 if __name__ == "__main__":
