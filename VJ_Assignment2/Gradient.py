@@ -12,19 +12,19 @@ import numpy as np
 def gradient(F, x0, tol=1e-8):
 
     X_k = np.copy(x0)
-    #print("X0", initialX)
+
 
     N = len(X_k)
-    #print("N", N)
+
 
     h = np.eye(N)
 
     h = h * tol
 
-    #print("h", h)
+
 
     g = np.zeros(N, )
-    #print("g", g)
+
 
 
     for i in range(N):

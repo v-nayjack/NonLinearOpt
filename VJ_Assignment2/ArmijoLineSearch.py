@@ -20,13 +20,23 @@ def armijolinesearch(F, x0, pk, maxiter=1e3):
     c = 0.9
     eta1 = 0.4
     eta2 = 0.4
-    S = 1
+    S = 1.
+    S_min = 0.
     k=0
     g = gradient(F, X0)
 
+    v = np.dot(np.transpose(Pk), g).flatten()
+
+
+    if v[0] == 0.:
+        D = v
+        return S
+
+    D = lambda s: (F(X0 + s * Pk.flatten()) - F(X0)) / (s * v)
+
+
     while k < maxiter:
 
-        D = lambda s: (F(X0 + s * Pk.flatten()) - F(X0))/(s * np.dot(np.transpose(Pk), g))
 
         if abs(1-D(S)) <= eta2:
             S_min = S
@@ -36,6 +46,7 @@ def armijolinesearch(F, x0, pk, maxiter=1e3):
             break
 
         S = S_min + c*(S-S_min)
+
         k += 1
 
         if D(S) <= eta1:
