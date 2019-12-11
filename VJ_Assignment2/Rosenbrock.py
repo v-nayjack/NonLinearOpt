@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     U = np.array([2., 2.])
 
-#    QN_minX, QN_H_K, QN_K = quasi_newton(rosenbrock, X0)
+#    QN_minX, QN_K = quasi_newton(rosenbrock, X0)
 
 #    print("Quasi Newton Minimum  ", QN_minX)
 #    print('Quasi Newton Fmin', rosenbrock(QN_minX))

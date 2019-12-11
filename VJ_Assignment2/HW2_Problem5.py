@@ -15,7 +15,7 @@ from PowellMethod import powell_method
 
 
 
-def total_least_squares(x0, m=0.5, n=10, d_range=(0, 5), B=0.0, eps=1e-2):
+def total_least_squares(x0, m=0.5, n=10, d_range=(0, 5), eps=1e-2):
 
     # ri represents Ri from equation y = mx+b+e(Ri-1)
     ri = random.random()
@@ -48,16 +48,12 @@ def total_least_squares(x0, m=0.5, n=10, d_range=(0, 5), B=0.0, eps=1e-2):
 
 def prob4_plot(rnge, Minimum, X, Y):
 
-    print("X", X)
-    print("Y", Y)
 
     v = (Minimum[0] * X) + Minimum[1]
 
-    print("V", v)
-
     plt.figure()
     plt.scatter(X, Y, color='green', marker='*')
-    plt.plot(X, Minimum[0] * X + Minimum[1], color='red', Linewidth=2)
+    plt.plot(X, v, color='red', Linewidth=2)
     plt.title("Least Squares Method", fontsize=20)
     plt.xlabel("x axis", fontsize=16)
     plt.ylabel("y axis", fontsize=16)
@@ -78,13 +74,12 @@ if __name__ == "__main__":
     L = np.array([0.0, 0.0])
     U = np.array([10.0, 10.0])
     slope = 0.5
-    N = 10
+    N = 100
     D_range = (0, 5)
-    y_intercept = 0.0
-    noise = 1e-3
+    noise = 1e-1
 
     # Returned Values
-    A, XX, YY, Func_a = total_least_squares(X0, slope, N, D_range, y_intercept, noise)
+    A, XX, YY, Func_a = total_least_squares(X0, slope, N, D_range, noise)
 
     # Objective Function Plot
 #    nr_plot(A, Func_a)

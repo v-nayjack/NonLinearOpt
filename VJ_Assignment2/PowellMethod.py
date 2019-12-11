@@ -51,7 +51,7 @@ def powell_method(F, x0, Left, Right, maxiter=1e5, tol=1e-8):
 
         k += 1
 
-    return X_k, k
+    return np.around(X_k, decimals=2), k
 
 
 if __name__ == "__main__":

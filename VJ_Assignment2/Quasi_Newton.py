@@ -61,7 +61,7 @@ def quasi_newton(F, x0, tol=1e-8, maxiter=1e5):
 
         k += 1
 
-    return X_k, H_k, k
+    return np.around(X_k, decimals=2), k
 
 
 if __name__ == "__main__":
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
     X0 = np.array([2.55, 1.75])
 
-    minX, H_K, K = quasi_newton(Func, X0)
+    minX, K = quasi_newton(Func, X0)
 
     print("minimum exists at  ", minX)
     print('Fmin', Func(minX))
