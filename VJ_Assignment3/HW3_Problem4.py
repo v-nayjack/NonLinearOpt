@@ -8,6 +8,7 @@ Include code description here:
 """
 
 import numpy as np
+from autograd import jacobian, hessian
 from scipy.optimize import minimize
 from Rosenbrock import rosenbrock
 from AugmentedLagrangian import augmentedlagrangian as AL

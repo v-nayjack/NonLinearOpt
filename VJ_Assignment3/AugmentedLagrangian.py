@@ -8,6 +8,7 @@ Include code description here:
 """
 import numpy as np
 from scipy.optimize import minimize
+from autograd import jacobian, hessian
 
 def augmentedlagrangian(F, c_eq, c_ineq, x0, r0=0.25, v0_eq=1, v0_ineq=1, beta=0.1, maxiter=1e3):
 
@@ -16,13 +17,18 @@ def augmentedlagrangian(F, c_eq, c_ineq, x0, r0=0.25, v0_eq=1, v0_ineq=1, beta=0
     while k < maxiter:
 
         '''Augmented Lagrangian Function with Inequality Constraints'''
+        C_ineq = c_ineq(x0) - (r0/2)*v0_ineq
+
+        C_ineq = C_ineq[C_ineq < 0]
+
 
         F_al_equality = lambda x: F(x) + (1/r0) * (np.linalg.norm(c_eq(x) - ((r0/2) * v0_eq)))**2 \
-                                  + (1/r0) * (sum((min(0.0, (c_ineq(x) - (r0/2) * v0_ineq)))**2))
+                                  + (1/r0) * sum(C_ineq**2)
 
         '''Unconstrained Optimization'''
 
-        res = minimize(F_al_equality, x0, method='Newton-CG', options={'xtol': 1e-8, 'disp': False})
+        res = minimize(F_al_equality, x0, method='Nelder-Mead',\
+                       options={'xtol': 1e-8, 'disp': False})
         xk = res.x
 
         '''Updating v for Equality Constraints'''
@@ -59,7 +65,7 @@ def augmentedlagrangian(F, c_eq, c_ineq, x0, r0=0.25, v0_eq=1, v0_ineq=1, beta=0
         if np.linalg.norm(c_eq(x0)) <= 1e-8 and np.linalg.norm(c_ineq(x0)) <= 1e-8:
             return x0
 
-        if abs(delta_x) <= 1e-5:
+        if abs(np.linalg.norm(delta_x)) <= 1e-5:
             return x0
 
     return x0

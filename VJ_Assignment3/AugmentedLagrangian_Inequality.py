@@ -9,6 +9,7 @@ Include code description here:
 
 import numpy as np
 from scipy.optimize import minimize
+from autograd import jacobian, hessian
 
 def al_inequality(F, c, x0, r0=0.25, v0=1, beta=0.1, maxiter=1e3):
 
@@ -17,12 +18,17 @@ def al_inequality(F, c, x0, r0=0.25, v0=1, beta=0.1, maxiter=1e3):
     while k < maxiter:
 
         '''Augmented Lagrangian Function with Inequality Constraints'''
+        C = c(x0) - (r0/2)*v0
 
-        F_al_equality = lambda x: F(x) + (1/r0) * (sum((min(0.0, (c(x) - (r0/2) * v0)))**2))
+        C = C[C < 0]
+
+
+        F_al_equality = lambda x: F(x) + (1/r0) * sum(C**2)
 
         '''Unconstrained Optimization'''
 
-        res = minimize(F_al_equality, x0, method='Newton-CG', options={'xtol': 1e-8, 'disp': False})
+        res = minimize(F_al_equality, x0, method='Nelder-Mead',\
+                       options={'xtol': 1e-8, 'disp': False})
         xk = res.x
 
         '''Updating v'''
@@ -54,7 +60,7 @@ def al_inequality(F, c, x0, r0=0.25, v0=1, beta=0.1, maxiter=1e3):
         if np.linalg.norm(c(x0)) <= 1e-8:
             return x0
 
-        if abs(delta_x) <= 1e-5:
+        if abs(np.linalg.norm(delta_x)) <= 1e-5:
             return x0
 
     return x0
