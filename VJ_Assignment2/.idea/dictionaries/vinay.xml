@@ -8,6 +8,8 @@
       <w>fmin</w>
       <w>jakkali</w>
       <w>maxiter</w>
+      <w>maxs</w>
+      <w>mins</w>
       <w>powellmethod</w>
       <w>rnge</w>
       <w>rosenbrock</w>
