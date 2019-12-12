@@ -1,13 +1,13 @@
 <component name="ProjectDictionaryState">
   <dictionary name="vinay">
     <words>
-      <w>augmentedlagrangian</w>
-      <w>bfgs</w>
+      <w>ackley</w>
       <w>disp</w>
-      <w>ineq</w>
       <w>maxiter</w>
-      <w>nelder</w>
+      <w>phig</w>
       <w>rosenbrock</w>
+      <w>tmin</w>
+      <w>xmin</w>
       <w>xtol</w>
     </words>
   </dictionary>

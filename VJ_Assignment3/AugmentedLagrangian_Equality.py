@@ -8,7 +8,7 @@ Include code description here:
 """
 import numpy as np
 from scipy.optimize import minimize
-from autograd import jacobian, hessian
+
 
 def al_equality(F, c, x0, r0=0.25, v0=1, beta=0.1, maxiter=1e3):
 
@@ -18,12 +18,11 @@ def al_equality(F, c, x0, r0=0.25, v0=1, beta=0.1, maxiter=1e3):
 
         '''Augmented Lagrangian Function with Equality Constraints'''
 
-        F_al_equality = lambda x: F(x) + (1/r0) * (np.linalg.norm(c(x) - ((r0/2) * v0)))**2
+        F_al_eq = lambda x: F(x) + (1/r0) * (np.linalg.norm(c(x) - ((r0/2) * v0)))**2
 
         '''Unconstrained Optimization'''
 
-        res = minimize(F_al_equality, x0, method='Nelder-Mead',\
-                       options={'xtol': 1e-8, 'disp': False})
+        res = minimize(F_al_eq, x0, method='Powell', options={'xtol': 1e-8, 'disp': False})
         xk = res.x
 
         '''Updating v'''

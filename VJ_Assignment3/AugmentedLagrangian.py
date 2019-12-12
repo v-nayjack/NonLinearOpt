@@ -22,14 +22,14 @@ def augmentedlagrangian(F, c_eq, c_ineq, x0, r0=0.25, v0_eq=1, v0_ineq=1, beta=0
         C_ineq = C_ineq[C_ineq < 0]
 
 
-        F_al_equality = lambda x: F(x) + (1/r0) * (np.linalg.norm(c_eq(x) - ((r0/2) * v0_eq)))**2 \
+        F_al_both = lambda x: F(x) + (1/r0) * (np.linalg.norm(c_eq(x) - ((r0/2) * v0_eq)))**2 \
                                   + (1/r0) * sum(C_ineq**2)
 
         '''Unconstrained Optimization'''
 
-        res = minimize(F_al_equality, x0, method='Nelder-Mead',\
-                       options={'xtol': 1e-8, 'disp': False})
+        res = minimize(F_al_both, x0, method='Powell', options={'xtol': 1e-8, 'disp': False})
         xk = res.x
+
 
         '''Updating v for Equality Constraints'''
 
@@ -40,6 +40,7 @@ def augmentedlagrangian(F, c_eq, c_ineq, x0, r0=0.25, v0_eq=1, v0_ineq=1, beta=0
         if c_ineq(xk) < (r0/2) * v0_ineq:
 
             vk_ineq = v0_ineq - ((2/r0) * c_ineq(xk))
+
         else:
 
             vk_ineq = 0
