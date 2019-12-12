@@ -33,7 +33,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 from Quasi_Newton import quasi_newton
-from PowellMethod import powell_method
+from PowellMethod import powell_method, powell_surfaceplot, powell_contourplot
 
 
 
@@ -104,8 +104,6 @@ if __name__ == "__main__":
     # Returned Values
     A, XX, YY, Func_a = total_least_squares(X0, slope, N, D_range, noise)
 
-    # Objective Function Plot
-#    nr_plot(A, Func_a)
 
     # Data Minimization Plot
     prob5_plot(D_range, A, XX, YY)

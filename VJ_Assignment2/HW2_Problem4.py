@@ -7,8 +7,7 @@ Method or Quasi-Newton Method
 --------------------------------------------------------------------------------------
 """
 import numpy as np
-from PowellMethod import powell_method
-from Quasi_Newton import quasi_newton
+from Quasi_Newton import quasi_newton, quasi_newton_surfaceplot, quasi_newton_contourplot
 
 
 def f(x):
@@ -52,9 +51,17 @@ if __name__ == '__main__':
 
     Mins, Maxs, f_mins, f_maxs = main()
 
+
     TotalMins = np.unique(f_mins)
 
     TotalMaxs = np.where(np.unique(f_maxs >= 0.))[0]
+
+    quasi_newton_contourplot(f, Mins[0, :])
+    quasi_newton_surfaceplot(f, Mins[0, :])
+
+
+    print("Minimums", Mins)
+    print("Maximums", Maxs)
 
     print("Total no. of minimums", len(TotalMins))
     print("Total no. of maximums", len(TotalMaxs))

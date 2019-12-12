@@ -7,6 +7,7 @@
       <w>augmentedlagrangian</w>
       <w>bfgs</w>
       <w>broyden</w>
+      <w>contourplot</w>
       <w>dircn</w>
       <w>disp</w>
       <w>fmaxs</w>
@@ -24,12 +25,15 @@
       <w>rosenbrock</w>
       <w>shanno</w>
       <w>succ</w>
+      <w>surfaceplot</w>
       <w>tmin</w>
       <w>univariate</w>
       <w>univariatescan</w>
       <w>vinay</w>
+      <w>xlist</w>
       <w>xmin</w>
       <w>xtol</w>
+      <w>ylist</w>
     </words>
   </dictionary>
 </component>
