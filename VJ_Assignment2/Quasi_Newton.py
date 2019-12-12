@@ -2,8 +2,21 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+The quasi_newton function defined here takes following parameters as input
 
+INPUT:
+    F : It is the objective function
+
+    x0 : It is an array of size Nx1 initial guesses required for Quasi-Newton method
+
+    tol : This is the tolerance accepted for the minimized objective function
+    (by default tol = 1e-8)
+
+    maxiter : Maximum iterations to stop the optimization
+    (by default maxiter = 1e3)
+
+OUTPUT:
+    1. Returns the values of minimum 'X_k' and total number of iterations 'k'
 --------------------------------------------------------------------------------------
 """
 
@@ -19,7 +32,7 @@ def quasi_newton(F, x0, tol=1e-8, maxiter=1e5):
 
     N = len(X_k)
 
-    H0 = np.identity(N)
+    H0 = np.identity(N)  # Initial guess for approximation of the inverse of the Hessian
 
     H_k = np.copy(H0)
 
@@ -29,28 +42,21 @@ def quasi_newton(F, x0, tol=1e-8, maxiter=1e5):
 
     while stop_criteria > tol and k < maxiter:
 
-        G_k = grad(F, X_k)
+        G_k = grad(F, X_k)  # Gradient vector of F at X_k
 
+        P_k = np.dot(-H_k, G_k)  # Direction vector
 
-        P_k = np.dot(-H_k, G_k)
+        S = als(F, X_k, P_k)  # Step size obtained from weak line search
 
+        X_k1 = X_k + S * P_k.flatten()  # Updated X values
 
-        S = als(F, X_k, P_k)
+        Delta_k = S * P_k  # Delta vector
 
+        G_k1 = grad(F, X_k1)  # Gradient vector of F at X_k1
 
-        X_k1 = X_k + S * P_k.flatten()
+        Gamma_k = G_k1 - G_k  # Gamma vector containing differences of gradients at X_k1 and X_k
 
-
-        Delta_k = S * P_k
-
-
-        G_k1 = grad(F, X_k1)
-
-
-        Gamma_k = G_k1 - G_k
-
-
-        H_k1 = bfgs(H_k, Gamma_k, Delta_k)
+        H_k1 = bfgs(H_k, Gamma_k, Delta_k)  # BFGS update for H(k+1)
 
         X_k = X_k1
 

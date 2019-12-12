@@ -2,8 +2,8 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
-
+Problem 6 calculations for the various input points to find the optimized robot
+path
 --------------------------------------------------------------------------------------
 """
 import numpy as np
@@ -17,10 +17,15 @@ if __name__ == '__main__':
 
     # Input Values for the 'routing' function
     Point = (5.0, 3.0)
+
     Center = (2.0, 2.0)
+
     Radius = 1.0
+
     Rho = 20
+
     X0 = np.array([0., 0.])
+
     tolerance = 1e-8
 
     Func = lambda x: Routing.routing_two(x, Point, Center, Radius, Rho)

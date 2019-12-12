@@ -2,7 +2,13 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+The rosenbrock function defined here takes following parameters as input
+
+INPUT:
+    x : It is vector of 2 variables in 'x'
+
+OUTPUT:
+    1. Ackley function of 2 variables
 
 --------------------------------------------------------------------------------------
 """
@@ -17,7 +23,7 @@ def ackley(x):
 
     B = 0.5 * sum(np.cos(2 * np.pi * x))
 
-    Obj_Func = -20. * math.exp(A) - math.exp(B) + math.exp(1) + 20
+    Obj_Func = -20. * np.exp(A) - np.exp(B) + np.exp(1) + 20
 
     return Obj_Func
 

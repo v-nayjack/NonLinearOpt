@@ -2,8 +2,13 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+The rosenbrock function defined here takes following parameters as input
 
+INPUT:
+    x : It is vector of N variables in 'x'
+
+OUTPUT:
+    1. Rosenbrock function of N variables
 --------------------------------------------------------------------------------------
 """
 

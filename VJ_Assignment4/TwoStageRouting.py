@@ -2,8 +2,23 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+The two stage routing function defined here takes following parameters as input
 
+INPUT:
+     x : it is an array that represents the intermediate point
+
+    P1 : it is an array that represents the input point P1 = ([x.0, y.0])
+
+    C0: it is an array that represents center of the given circle  C0 = ([x.0, y.0])
+    (by default center = (2.0, 2.0))
+
+    r : it is the radius of the circle and takes float value as input
+
+    rho : it the penalty term
+
+OUTPUT:
+    1. Objective Function in terms of F(x) = ([x1, x2]) for the intermediate point
+    for robot path
 --------------------------------------------------------------------------------------
 """
 
@@ -13,7 +28,12 @@ import matplotlib.pyplot as plt
 
 def routing_two(x, P1, C0, r, rho):
 
-    A1 = x[0] ** 2 + x[1] ** 2  # one of the points is origin
+    """Calculating the objective function to find the intermediate point for robot path """
+
+    """ Stage one calculations """
+    """ ([xa, ya]) and ([xb, yb]) are treated as origin and intermediate point respectively """
+
+    A1 = x[0] ** 2 + x[1] ** 2
 
     B1 = 2 * ((-C0[0] * x[0]) + (-C0[1] * x[1]))
 
@@ -43,9 +63,11 @@ def routing_two(x, P1, C0, r, rho):
             v1 = 0
 
 
-    F1 = (A1 ** 0.5) + (rho * v1 ** 3)
+    F1 = (A1 ** 0.5) + (rho * v1 ** 3)  # Function for the first stage
+
 
     """Second Stage Calculations"""
+    """ ([xa, ya]) and ([xb, yb]) are treated as intermediate point and the input point respectively """
 
     A2 = (P1[0] - x[0]) ** 2 + (P1[1] - x[1]) ** 2
 
@@ -77,9 +99,9 @@ def routing_two(x, P1, C0, r, rho):
             v2 = 0
 
 
-    F2 = (A2 ** 0.5) + (rho * v2 ** 3)
+    F2 = (A2 ** 0.5) + (rho * v2 ** 3)  # Function for the second stage
 
-    F = F1 + F2
+    F = F1 + F2  # Final objective function for intermediate point
 
     return F
 

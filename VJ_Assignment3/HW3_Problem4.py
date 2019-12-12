@@ -2,8 +2,7 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
-
+Problem 4 calculations to minimize Rosenbrock Function for all the given constraints
 --------------------------------------------------------------------------------------
 """
 

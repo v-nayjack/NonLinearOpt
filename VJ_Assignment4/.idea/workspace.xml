@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25763fef-8038-460c-934a-af50004631fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/vinay.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BasinHopping.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HW4_Problem4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HW4_Problem5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HW4_Problem6.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MonteCarlo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ParticleSwarm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Rosenbrock.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TwoStageRouting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment2/Lambdatest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ackley.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment2/UnivariateMethod.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment3/.idea/dictionaries/vinay.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../VJ_Assignment3/.idea/dictionaries/vinay.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment3/AugmentedLagrangian.py" beforeDir="false" afterPath="$PROJECT_DIR$/../VJ_Assignment3/AugmentedLagrangian.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment3/AugmentedLagrangian_Equality.py" beforeDir="false" afterPath="$PROJECT_DIR$/../VJ_Assignment3/AugmentedLagrangian_Equality.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment3/AugmentedLagrangian_Inequality.py" beforeDir="false" afterPath="$PROJECT_DIR$/../VJ_Assignment3/AugmentedLagrangian_Inequality.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment3/Gradient.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VJ_Assignment3/HW3_Problem4.py" beforeDir="false" afterPath="$PROJECT_DIR$/../VJ_Assignment3/HW3_Problem4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/VJ_Assignment4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VJ_Assignment4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="25763fef-8038-460c-934a-af50004631fe" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +32,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/results" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VJ_Assignment2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -213,38 +189,54 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576133494824</updated>
-      <workItem from="1576133496046" duration="12947000" />
+      <workItem from="1576133496046" duration="13041000" />
     </task>
+    <task id="LOCAL-00001" summary="Assignment 4 complete">
+      <created>1576146725819</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576146725819</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Assignment 4 complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Assignment 4 complete" />
   </component>
   <component name="WindowStateProjectService">
     <state x="883" y="100" key="#xdebugger.evaluate" timestamp="1576145018200">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="883" y="100" key="#xdebugger.evaluate/0.0.1600.860@0.0.1600.860" timestamp="1576145018200" />
-    <state x="530" y="124" key="FileChooserDialogImpl" timestamp="1576146307681">
+    <state x="329" y="0" key="CommitChangelistDialog2" timestamp="1576146725102">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="124" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1576146307681" />
-    <state width="1548" height="201" key="GridCell.Tab.0.bottom" timestamp="1576146571059">
+    <state x="329" y="0" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1576146725102" />
+    <state x="530" y="124" key="FileChooserDialogImpl" timestamp="1576146762000">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1548" height="201" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1576146571059" />
-    <state width="1548" height="201" key="GridCell.Tab.0.center" timestamp="1576146571059">
+    <state x="530" y="124" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1576146762000" />
+    <state width="1548" height="201" key="GridCell.Tab.0.bottom" timestamp="1576146763344">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1548" height="201" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1576146571059" />
-    <state width="1548" height="201" key="GridCell.Tab.0.left" timestamp="1576146571059">
+    <state width="1548" height="201" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1576146763344" />
+    <state width="1548" height="201" key="GridCell.Tab.0.center" timestamp="1576146763344">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1548" height="201" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1576146571059" />
-    <state width="1548" height="201" key="GridCell.Tab.0.right" timestamp="1576146571059">
+    <state width="1548" height="201" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1576146763344" />
+    <state width="1548" height="201" key="GridCell.Tab.0.left" timestamp="1576146763344">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1548" height="201" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1576146571059" />
+    <state width="1548" height="201" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1576146763344" />
+    <state width="1548" height="201" key="GridCell.Tab.0.right" timestamp="1576146763344">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1548" height="201" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1576146763344" />
     <state width="1548" height="251" key="GridCell.Tab.1.bottom" timestamp="1576145168564">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -265,6 +257,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="193" y="0" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1576135125232" />
+    <state x="292" y="94" key="Vcs.Push.Dialog.v2" timestamp="1576146731089">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="292" y="94" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1576146731089" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/VJ_Assignment4$ParticleSwarm.coverage" NAME="ParticleSwarm Coverage Results" MODIFIED="1576140770209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -1,20 +1,35 @@
 <component name="ProjectDictionaryState">
   <dictionary name="vinay">
     <words>
+      <w>ackley</w>
       <w>armijo</w>
       <w>armijolinesearch</w>
+      <w>augmentedlagrangian</w>
       <w>bfgs</w>
+      <w>broyden</w>
       <w>dircn</w>
+      <w>disp</w>
+      <w>fmaxs</w>
       <w>fmin</w>
+      <w>fmins</w>
+      <w>goldfarb</w>
+      <w>ineq</w>
       <w>jakkali</w>
       <w>maxiter</w>
       <w>maxs</w>
       <w>mins</w>
       <w>powellmethod</w>
+      <w>raphson</w>
       <w>rnge</w>
       <w>rosenbrock</w>
+      <w>shanno</w>
       <w>succ</w>
+      <w>tmin</w>
+      <w>univariate</w>
+      <w>univariatescan</w>
       <w>vinay</w>
+      <w>xmin</w>
+      <w>xtol</w>
     </words>
   </dictionary>
 </component>

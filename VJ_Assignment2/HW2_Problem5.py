@@ -2,7 +2,29 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+Problem 5. function takes the following inputs
+
+INPUT:
+    X0 - It takes an array, which acts as an initial guess to Powell Method
+
+    m - It takes a float value and it represents the slope of the input line
+    (by default m = 0.5)
+
+    n - It is the no. of points that are being mapped. It takes an integer value >0
+    (by default n = 100)
+
+    d_range - It is the range defined for the graph
+    (by default d_range = (0, 5))
+
+    eps - represents the magnitude of the noise in the input data
+    (by default eps = 1e-2)
+
+OUTPUT:
+    1. Returns the values of minimum 'xn' and total number of iterations 'k'
+
+    2. A new window with the plot showing objective function with the minimum point
+
+    3. Print the values of total number of iterations 'k', minimum 'x', minimum 'F(x)' to the console
 
 --------------------------------------------------------------------------------------
 """
@@ -15,7 +37,7 @@ from PowellMethod import powell_method
 
 
 
-def total_least_squares(x0, m=0.5, n=10, d_range=(0, 5), eps=1e-2):
+def total_least_squares(x0, m=0.5, n=100, d_range=(0, 5), eps=1e-2):
 
     # ri represents Ri from equation y = mx+b+e(Ri-1)
     ri = random.random()
@@ -36,17 +58,16 @@ def total_least_squares(x0, m=0.5, n=10, d_range=(0, 5), eps=1e-2):
     # Defining the given F(a) equation
     F_a = lambda a: sum((X - z(a)) ** 2 + (Y - (a[0] * z(a) + a[1])) ** 2)
 
-    # Minimizing the function F(a) using Newton-Raphson Method
-#    Minimum, H_k, iter_nr = quasi_newton(F_a, x0)
+    # Minimizing the function F(a1, a2) using Powell Method
     L = np.array([0.0, 0.0])
     U = np.array([10.0, 10.0])
     Minimum, iter_nr = powell_method(F_a, x0, L, U)
 
     return Minimum, X, Y, F_a
 
-""" Function 'prob4_plot' plots the 'actual data' along with the 'best fit line' """
+""" Function 'prob5_plot' plots the 'actual data' along with the 'best fit line' """
 
-def prob4_plot(rnge, Minimum, X, Y):
+def prob5_plot(rnge, Minimum, X, Y):
 
 
     v = (Minimum[0] * X) + Minimum[1]
@@ -71,11 +92,13 @@ if __name__ == "__main__":
 
     # Input Values for the 'total_least_squares' function
     X0 = np.array([1.0, 1.0])
-    L = np.array([0.0, 0.0])
-    U = np.array([10.0, 10.0])
+
     slope = 0.5
+
     N = 100
+
     D_range = (0, 5)
+
     noise = 1e-1
 
     # Returned Values
@@ -85,7 +108,7 @@ if __name__ == "__main__":
 #    nr_plot(A, Func_a)
 
     # Data Minimization Plot
-    prob4_plot(D_range, A, XX, YY)
+    prob5_plot(D_range, A, XX, YY)
 
     # Results output printed to the console
     print(" The optimized value of 'a' is = ", A)

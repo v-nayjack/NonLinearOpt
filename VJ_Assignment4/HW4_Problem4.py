@@ -2,8 +2,8 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
-
+Problem 4 calculations to minimize Ackley Function using Monte Carlo, Basin Hopping
+and Particle Swarm optimization methods
 --------------------------------------------------------------------------------------
 """
 import numpy as np

@@ -2,8 +2,18 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+Gradient function takes the following inputs
 
+INPUT:
+    F : It is the Function F(x)
+
+    X0 - It is an array of N variables of F(x)
+
+    tol : This is the tolerance accepted for the minimized objective function
+    (by default tol = 1e-8)
+
+OUTPUT:
+    1. Returns the gradient array of size (N x 1)
 --------------------------------------------------------------------------------------
 """
 
@@ -13,18 +23,13 @@ def gradient(F, x0, tol=1e-8):
 
     X_k = np.copy(x0)
 
-
     N = len(X_k)
-
 
     h = np.eye(N)
 
     h = h * tol
 
-
-
     g = np.zeros(N, )
-
 
 
     for i in range(N):

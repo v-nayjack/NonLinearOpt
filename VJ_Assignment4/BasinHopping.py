@@ -2,8 +2,20 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+The particle_swarm function defined here takes following parameters as input
 
+INPUT:
+    F : It is the objective function
+
+    x0 : It is an array of size Nx1 initial guesses required for Quasi-Newton method
+
+    Particles : Initial Temperature value
+
+    maxiter : Maximum iterations to stop the optimization
+    (by default maxiter = 1e3)
+
+OUTPUT:
+    1. Returns the values of minimum 'Xk_min'
 --------------------------------------------------------------------------------------
 """
 import numpy as np
@@ -12,10 +24,15 @@ from scipy.optimize import minimize
 from Rosenbrock import rosenbrock
 
 def basin_hopping(F, x0, T=1, maxiter=1e3):
+
     X0 = np.copy(x0)
+
     res = minimize(F, X0, method='Powell', options={'xtol': 1e-8, 'disp': False})
+
     Z0 = res.x  # local minimum based on the initial guess X0
+
     Tmin = 1e-8  # minimum temperature
+
     k = 0
 
     while k < maxiter:

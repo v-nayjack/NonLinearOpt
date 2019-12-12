@@ -2,8 +2,25 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+The powell_method function defined here takes following parameters as input
 
+INPUT:
+    F : It is the objective function
+
+    x0 : It is an array of size Nx1 initial guesses required for Powell's method
+
+    Lower: It is an array of size Nx1 lower bound values
+
+    Upper: It is an array of size Nx1 upper bound values
+
+    tol : This is the tolerance accepted for the minimized objective function
+    (by default tol = 1e-8)
+
+    maxiter : Maximum iterations to stop the optimization
+    (by default maxiter = 1e3)
+
+OUTPUT:
+    1. Returns the values of minimum 'X_k' and total number of iterations 'k'
 --------------------------------------------------------------------------------------
 """
 
@@ -11,7 +28,7 @@ import numpy as np
 from BisectionMethod import bisection
 
 
-def powell_method(F, x0, Left, Right, maxiter=1e5, tol=1e-8):
+def powell_method(F, x0, Lower, Upper, maxiter=1e5, tol=1e-8):
 
     X_k = np.copy(x0)  # 1xN
 
@@ -32,8 +49,8 @@ def powell_method(F, x0, Left, Right, maxiter=1e5, tol=1e-8):
 
             f = lambda s: F(X_k +(s*D))  # 1xN
 
-            a = Left[i] - X_k[i]
-            b = Right[i] - X_k[i]
+            a = Lower[i] - X_k[i]
+            b = Upper[i] - X_k[i]
 
             S = bisection(f, a, b)  # Scalar
 

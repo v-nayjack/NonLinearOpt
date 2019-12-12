@@ -2,7 +2,20 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
+The armijolinesearch function defined here takes following parameters as input
+
+INPUT:
+    F : It is the objective function
+
+    x0 : It is an array of size Nx1 initial guesses required for Quasi Newton method
+
+    pk : It is an array of size Nx1 containing search directions
+
+    maxiter : Maximum iterations to stop the optimization
+    (by default maxiter = 1e3)
+
+OUTPUT:
+    1. Returns the values of minimum 'X_k' and total number of iterations 'k'
 
 --------------------------------------------------------------------------------------
 """
@@ -21,7 +34,6 @@ def armijolinesearch(F, x0, pk, maxiter=1e3):
     eta1 = 0.4
     eta2 = 0.4
     S = 1.
-    S_min = 0.
     k=0
     g = gradient(F, X0)
 

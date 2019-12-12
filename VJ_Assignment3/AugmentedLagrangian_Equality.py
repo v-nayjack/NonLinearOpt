@@ -16,33 +16,33 @@ def al_equality(F, c, x0, r0=0.25, v0=1, beta=0.1, maxiter=1e3):
 
     while k < maxiter:
 
-        '''Augmented Lagrangian Function with Equality Constraints'''
+        """ Augmented Lagrangian Function with Equality Constraints """
 
         F_al_eq = lambda x: F(x) + (1/r0) * (np.linalg.norm(c(x) - ((r0/2) * v0)))**2
 
-        '''Unconstrained Optimization'''
+        """ Unconstrained Optimization """
 
         res = minimize(F_al_eq, x0, method='Powell', options={'xtol': 1e-8, 'disp': False})
         xk = res.x
 
-        '''Updating v'''
+        """ Updating v for Equality Constraints """
 
         vk = v0 - ((2/r0) * c(xk))
 
-        '''Updating r'''
+        """ Updating r """
 
         rk = beta * r0
 
-        '''Updating all values for next iteration'''
+        """ Updating all values for next iteration """
 
         r0 = rk
         v0 = vk
         x0 = xk
 
-        '''Iteration number update'''
+        """ Iteration number update """
         k += 1
 
-        '''Stopping Criteria'''
+        """ Stopping Criteria """
 
         if np.linalg.norm(c(x0)) <= 1e-8:
             return x0

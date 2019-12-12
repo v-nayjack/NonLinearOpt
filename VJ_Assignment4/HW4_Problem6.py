@@ -2,8 +2,8 @@
 
 """
 --------------------------------------------------------------------------------------
-Include code description here:
-
+Problem 6 calculations for the various input points to find the optimized robot
+path
 --------------------------------------------------------------------------------------
 """
 
