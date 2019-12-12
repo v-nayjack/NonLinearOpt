@@ -4,8 +4,5 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Python 3.7 " jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="VJ_Assignment1" />
-    <orderEntry type="module" module-name="VJ_Assignment3" />
-    <orderEntry type="module" module-name="VJ_Assignment4" />
   </component>
 </module>

@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../VJ_Assignment1/.idea/VJ_Assignment1.iml" filepath="$PROJECT_DIR$/../VJ_Assignment1/.idea/VJ_Assignment1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/VJ_Assignment2.iml" filepath="$PROJECT_DIR$/.idea/VJ_Assignment2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../VJ_Assignment3/.idea/VJ_Assignment3.iml" filepath="$PROJECT_DIR$/../VJ_Assignment3/.idea/VJ_Assignment3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../VJ_Assignment4/.idea/VJ_Assignment4.iml" filepath="$PROJECT_DIR$/../VJ_Assignment4/.idea/VJ_Assignment4.iml" />
     </modules>
   </component>
 </project>
