@@ -83,8 +83,8 @@ def quasi_newton_surfaceplot(f, xmin):
 
     # Creating Data points for surface plot
 
-    xlist = np.linspace(-5, 5, 1000)
-    ylist = np.linspace(-5, 5, 1000)
+    xlist = np.linspace(-5, 5, 100)
+    ylist = np.linspace(-5, 5, 100)
 
     X, Y = np.meshgrid(xlist, ylist)
     Z = f([X, Y])
@@ -121,8 +121,8 @@ def quasi_newton_contourplot(f, xmin):
 
     # Creating Data points for contour plot
 
-    xlist = np.linspace(-5, 5, 1000)
-    ylist = np.linspace(-5, 5, 1000)
+    xlist = np.linspace(-5, 5, 100)
+    ylist = np.linspace(-5, 5, 100)
 
     X, Y = np.meshgrid(xlist, ylist)
     Z = f([X, Y])

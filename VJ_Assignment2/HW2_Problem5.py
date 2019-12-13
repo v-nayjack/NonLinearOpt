@@ -108,8 +108,56 @@ if __name__ == "__main__":
     # Data Minimization Plot
     prob5_plot(D_range, A, XX, YY)
 
+
+
     # Results output printed to the console
     print(" The optimized value of 'a' is = ", A)
     print(" The minimized value of objective function F(a) = ", round(Func_a(A), 4))
+
+    """ Creating points for plotting the objective function """
+
+    fig = plt.figure()
+    left, bottom, width, height = 0.1, 0.1, 0.8, 0.8
+    ax = fig.add_axes([left, bottom, width, height])
+
+    # Creating Data points for contour plot
+
+    xlist = np.linspace(-5, 5, 100)
+    ylist = np.linspace(-5, 5, 100)
+
+    X, Y = np.meshgrid(xlist, ylist)
+    Z = Func_a([X, Y])
+
+    # Plotting the contour
+    cp = plt.contourf(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+
+    # Plotting the minimums on the plot surface
+    plt.scatter(A[0], A[1], color='red', marker='*')
+    #    plt.scatter(Maxs[4, 0], Maxs[4, 1], color='black', marker='o')
+
+    # Annotating the local minimum
+    #    ax.annotate('local min', xy=(xmin[0], xmin[1]), xytext=(xmin[0]+0.5, xmin[1]+0.5), fontsize=12,
+    #                ha='center', va='top')
+
+    # Adding the color bar
+    plt.colorbar(cp)
+
+    # Adding the title and axes labels
+    ax.set_title(" Local Minimums")
+    ax.set_xlabel(" x-axis ")
+    ax.set_ylabel(" y-axis ")
+
+    plt.show()
+
+    #    quasi_newton_contourplot(f, Mins[0, :])
+    #    quasi_newton_surfaceplot(f, Mins[0, :])
+
+    print("Minimums", Mins)
+    print("Maximums", Maxs)
+    print("Fmins", f_mins)
+    print("Fmaxs", f_maxs)
+
+    print("Total no. of minimums", len(TotalMins))
+    print("Total no. of maximums", len(TotalMaxs))
 
 

@@ -5,6 +5,7 @@
       <w>armijo</w>
       <w>armijolinesearch</w>
       <w>augmentedlagrangian</w>
+      <w>basinhopping</w>
       <w>bfgs</w>
       <w>broyden</w>
       <w>contourplot</w>

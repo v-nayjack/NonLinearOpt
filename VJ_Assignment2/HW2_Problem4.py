@@ -9,6 +9,11 @@ Method or Quasi-Newton Method
 import numpy as np
 from Quasi_Newton import quasi_newton, quasi_newton_surfaceplot, quasi_newton_contourplot
 
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
+from mpl_toolkits.mplot3d import Axes3D
+
 
 def f(x):
 
@@ -47,6 +52,9 @@ def main():
 
 
 
+
+
+
 if __name__ == '__main__':
 
     Mins, Maxs, f_mins, f_maxs = main()
@@ -56,12 +64,51 @@ if __name__ == '__main__':
 
     TotalMaxs = np.where(np.unique(f_maxs >= 0.))[0]
 
-    quasi_newton_contourplot(f, Mins[0, :])
-    quasi_newton_surfaceplot(f, Mins[0, :])
+
+    """ Creating points for plotting the objective function """
+
+    fig = plt.figure()
+    left, bottom, width, height = 0.1, 0.1, 0.8, 0.8
+    ax = fig.add_axes([left, bottom, width, height])
+
+    # Creating Data points for contour plot
+
+    xlist = np.linspace(-5, 5, 100)
+    ylist = np.linspace(-5, 5, 100)
+
+    X, Y = np.meshgrid(xlist, ylist)
+    Z = f([X, Y])
+
+    # Plotting the contour
+    cp = plt.contourf(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+
+    # Plotting the minimums on the plot surface
+    plt.scatter(Mins[:, 0], Mins[:, 1], color='red', marker='*')
+#    plt.scatter(Maxs[4, 0], Maxs[4, 1], color='black', marker='o')
+
+    # Annotating the local minimum
+#    ax.annotate('local min', xy=(xmin[0], xmin[1]), xytext=(xmin[0]+0.5, xmin[1]+0.5), fontsize=12,
+#                ha='center', va='top')
+
+    # Adding the color bar
+    plt.colorbar(cp)
+
+
+    # Adding the title and axes labels
+    ax.set_title(" Local Minimums")
+    ax.set_xlabel(" x-axis ")
+    ax.set_ylabel(" y-axis ")
+
+    plt.show()
+
+#    quasi_newton_contourplot(f, Mins[0, :])
+#    quasi_newton_surfaceplot(f, Mins[0, :])
 
 
     print("Minimums", Mins)
     print("Maximums", Maxs)
+    print("Fmins", f_mins)
+    print("Fmaxs", f_maxs)
 
     print("Total no. of minimums", len(TotalMins))
     print("Total no. of maximums", len(TotalMaxs))

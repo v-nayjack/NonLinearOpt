@@ -13,6 +13,47 @@ from MonteCarlo import monte_carlo
 from BasinHopping import basin_hopping
 from ParticleSwarm import particle_swarm
 
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
+from mpl_toolkits.mplot3d import Axes3D
+
+def basinhopping_contourplot(f, xmin):
+
+    """ Creating points for plotting the objective function """
+
+    fig = plt.figure()
+    left, bottom, width, height = 0.1, 0.1, 0.8, 0.8
+    ax = fig.add_axes([left, bottom, width, height])
+
+    # Creating Data points for contour plot
+
+    xlist = np.linspace(-5, 5, 10)
+    ylist = np.linspace(-5, 5, 10)
+
+    X, Y = np.meshgrid(xlist, ylist)
+    Z = f([X, Y])
+
+    # Plotting the contour
+    cp = plt.contourf(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+
+    # Plotting the minimums on the plot surface
+    plt.scatter(xmin[0], xmin[1], color='red', marker='*')
+
+    # Annotating the local minimum
+    ax.annotate('local min', xy=(xmin[0], xmin[1]), xytext=(xmin[0]+0.5, xmin[1]+0.5), fontsize=12,
+                ha='center', va='top')
+
+    # Adding the color bar
+    plt.colorbar(cp)
+
+
+    # Adding the title and axes labels
+    ax.set_title("Robot path optimization using Basin Hopping Method")
+    ax.set_xlabel(" x-axis ")
+    ax.set_ylabel(" y-axis ")
+
+    return plt.show()
 
 
 if __name__ == '__main__':
@@ -33,6 +74,8 @@ if __name__ == '__main__':
 
     # Robot Path Plot
     Routing.routing_plot(Center, Radius, Point, np.around(IntermediatePnt_BH, decimals=2))
+
+#    basinhopping_contourplot(Func, IntermediatePnt_BH)
 
     # Results output printed to the console
     print(" The intermediate point is = ", np.around(IntermediatePnt_BH, decimals=2))

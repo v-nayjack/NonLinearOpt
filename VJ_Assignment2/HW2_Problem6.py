@@ -32,6 +32,8 @@ if __name__ == '__main__':
     # Returned Values
     IntermediatePnt, k = quasi_newton(Func, X0)
 
+    quasi_newton_contourplot(Func, IntermediatePnt)
+
 
     # Robot Path Plot
     Routing.routing_plot(Center, Radius, Point, IntermediatePnt)

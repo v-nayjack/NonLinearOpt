@@ -12,6 +12,10 @@ from Rosenbrock import rosenbrock
 from AugmentedLagrangian import augmentedlagrangian as AL
 from AugmentedLagrangian_Equality import al_equality
 from AugmentedLagrangian_Inequality import al_inequality
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
+from mpl_toolkits.mplot3d import Axes3D
 
 def main():
 
